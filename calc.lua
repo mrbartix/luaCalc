@@ -8,7 +8,7 @@ function main()
   
   if tonumber(first) == nil then
     print("ERROR: Wrong Input! Aborting...")
-    os.exit()
+    reRun()
   else
     firstNum = tonumber(first)
     print("You chose " .. firstNum .. " as your first number.")
@@ -19,140 +19,49 @@ function main()
   
   if tonumber(second) == nil then
     print("ERROR: Wrong Input! Aborting...")
-    os.exit()
+    reRun()
   else
     secondNum = tonumber(second)
     print("You chose " .. secondNum .. " as your first number.")
   end
   
   print("Please choose operation that you want to execute:")
-  print("Addition [A];")
-  print("Subtraction [S];")
-  print("Multiplication [M];")
-  print("Division [D]")
+  print("Addition [1];")
+  print("Subtraction [2];")
+  print("Multiplication [3];")
+  print("Division [4]")
   
   operation = tostring(io.read()) --operation
-  
-  if operation == "A" then --checking if its not addition
-    Addcalculate()
-  elseif operation == "S" then
-    Subcalculate()
-  elseif operation == "M" then
-    Multiplycalculate()
-  elseif operation == "D" then
-    Devisioncalculate()
+
+  if operation == "1" then --checking if its not addition
+    print("It's " .. firstNum + secondNum)
+    reRun()
+  elseif operation == "2" then
+    print("It's " .. firstNum - secondNum)
+    reRun()
+  elseif operation == "3" then
+    print("It's " .. firstNum * secondNum)
+    reRun()
+  elseif operation == "4" then
+    print("It's " .. firstNum / secondNum)
+    reRun()
+  else
+    print("ERROR: Wrong input! Aborting...")
+    reRun()
+  end
+end --end main()
+
+function reRun()
+  print("Do you want to re-run this script? [Y/n]")
+  local runAgain = tostring(io.read())
+  if runAgain == "Y" then
+    main()
+  elseif runAgain == "n" then
+    print("Aborting... Bye!")
+    os.exit()
   else
     print("ERROR: Wrong input! Aborting...")
     os.exit()
   end
-end --end main()
-
-function Addcalculate()
-  print("So, to clarify")
-  print("As your first number you chose " .. firstNum)
-  print("As your operation you chose Addition")
-  print("As your second number you chose " .. secondNum)
-  print("Looks correct? [Y/n]")
-  local yesNo = tostring(io.read())
-  if yesNo == "Y" then
-    print("Calculating...")
-    equals = firstNum + secondNum
-    print("It's " .. equals)
-    equals = nil
-    firstNum = nil
-    secondNum = nil
-    print("Do you want to re-run the calculator? [Y/n]")
-    reRun = tostring(io.read())
-    if reRun == "Y" then
-      main()
-    else
-      print("Aborting...")
-    end
-  else
-    print("Aborting...")
-    os.exit()
-  end
 end
-
-function Subcalculate()
-  print("So, to clarify")
-  print("As your first number you chose " .. firstNum)
-  print("As your operation you chose Subtraction")
-  print("As your second number you chose " .. secondNum)
-  print("Looks correct? [Y/n]")
-  local yesNo = tostring(io.read())
-  if yesNo == "Y" then
-    print("Calculating...")
-    equals = firstNum - secondNum
-    print("It's " .. equals)
-    equals = nil
-    firstNum = nil
-    secondNum = nil
-    print("Do you want to re-run the calculator? [Y/n]")
-    reRun = tostring(io.read())
-    if reRun == "Y" then
-      main()
-    else
-      print("Aborting...")
-    end
-  else
-    print("Aborting...")
-    os.exit()
-  end
-end
-
-function Multiplycalculate()
-  print("So, to clarify")
-  print("As your first number you chose " .. firstNum)
-  print("As your operation you chose Multiplication")
-  print("As your second number you chose " .. secondNum)
-  print("Looks correct? [Y/n]")
-  local yesNo = tostring(io.read())
-  if yesNo == "Y" then
-    print("Calculating...")
-    equals = firstNum * secondNum
-    print("It's " .. equals)
-    equals = nil
-    firstNum = nil
-    secondNum = nil
-    print("Do you want to re-run the calculator? [Y/n]")
-    reRun = tostring(io.read())
-    if reRun == "Y" then
-      main()
-    else
-      print("Aborting...")
-    end
-  else
-    print("Aborting...")
-    os.exit()
-  end
-end
-
-function Devisioncalculate()
-  print("So, to clarify")
-  print("As your first number you chose " .. firstNum)
-  print("As your operation you chose Division")
-  print("As your second number you chose " .. secondNum)
-  print("Looks correct? [Y/n]")
-  local yesNo = tostring(io.read())
-  if yesNo == "Y" then
-    print("Calculating...")
-    equals = firstNum / secondNum
-    print("It's " .. equals)
-    equals = nil
-    firstNum = nil
-    secondNum = nil
-    print("Do you want to re-run the calculator? [Y/n]")
-    reRun = tostring(io.read())
-    if reRun == "Y" then
-      main()
-    else
-      print("Aborting...")
-    end
-  else
-    print("Aborting...")
-    os.exit()
-  end
-end
-----------------------------executing
-main()
+main() --executing
